@@ -1,11 +1,13 @@
 import { ReactNode } from "react"
+import _ from "lodash"
 import Latex from "react-latex-next"
-import { match } from "ts-pattern"
+import { match, P } from "ts-pattern"
 
 import { Quiz } from "@/types/quiz"
 import { cn } from "@/lib/utils"
 
 import { ChoiceQuizContent, OpenEndedQuizContent } from "./quiz-content"
+import { Badge } from "./ui/badge"
 
 const QuizCardWrapper = ({
   children,
@@ -37,6 +39,16 @@ const QuizCard = ({ quiz }: { quiz?: Quiz }) => {
 
   return (
     <QuizCardWrapper className="space-y-2">
+      <Badge variant="outline">
+        {match(quiz)
+          .with(
+            { kind: "choice", answers: P.when((a) => !_.isArray(a)) },
+            () => "Single Choice"
+          )
+          .with({ kind: "choice" }, () => "Multiple Choice")
+          .with({ kind: "open-ended" }, () => "Open Ended")
+          .exhaustive()}
+      </Badge>
       <div>
         <span className="mr-2 italic">Quiz:</span>
         <span className="font-semibold">

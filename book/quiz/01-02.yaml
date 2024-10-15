@@ -16,3 +16,6 @@
     - A set of odd numbers
     - A set of positive integers
     - $\mathbb{N}$ aka a set of natural numbers
+- id: 3
+  kind: open-ended
+  question: What is the closure property? Explain in a simple way and terms.

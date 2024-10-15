@@ -12,6 +12,7 @@ import { Button } from "./ui/button"
 import { Checkbox } from "./ui/checkbox"
 import { Label } from "./ui/label"
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group"
+import { Textarea } from "./ui/textarea"
 
 const CorrectMark = ({
   children,
@@ -183,7 +184,39 @@ const ChoiceQuizContent = ({ quiz }: { quiz: ChoiceQuiz }) => {
 ChoiceQuizContent.displayName = "ChoiceQuizContent"
 
 const OpenEndedQuizContent = ({ quiz }: { quiz: OpenEndedQuiz }) => {
-  return <></>
+  const [answer, setAnswer] = useState<string>("")
+  const submit = useCallback(() => {}, [])
+
+  return (
+    <div className="space-y-2">
+      {answer && (
+        <div className="whitespace-pre rounded-md border px-4 py-2 text-sm">
+          <Latex>{answer}</Latex>
+        </div>
+      )}
+      <Textarea
+        value={answer}
+        placeholder="Type your answer here. You can use LaTeX syntax, e.g. $\frac{1}{2}$"
+        onChange={(e) => setAnswer(e.target.value)}
+        className="min-h-10"
+      />
+      <div className="mt-2 flex gap-2">
+        <Button
+          size="xs"
+          variant="secondary"
+          className="ml-auto"
+          onClick={() => {
+            setAnswer("")
+          }}
+        >
+          Reset
+        </Button>
+        <Button size="xs" onClick={submit}>
+          Submit
+        </Button>
+      </div>
+    </div>
+  )
 }
 
 export { ChoiceQuizContent, OpenEndedQuizContent }
