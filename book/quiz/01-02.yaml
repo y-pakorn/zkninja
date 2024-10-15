@@ -1,0 +1,12 @@
+- id: 1
+  kind: choice
+  question: Given $\mathbb{T} = (\mathbb{Z},+)$, does $\mathbb{T}$ have closure property?
+  distractors:
+    - No
+  answers:
+    - Yes
+- id: 2
+  kind: choice
+  question: Which of these sets have closure property under "multiplicative operation"
+  distractors:
+    - $\mathbb{N}$

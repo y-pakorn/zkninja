@@ -1,35 +1,21 @@
-import { promises as fs } from "fs"
-import * as runtime from "react/jsx-runtime"
 import Link from "next/link"
-import { getAllChapters, getChapter } from "@/services/chapter"
-import { MDX_COMPONENTS } from "@/useMDXComponents"
-//import { MDXRemote } from "next-mdx-remote/rsc"
-//import { serialize } from "next-mdx-remote/serialize"
-import { compile, evaluate, run } from "@mdx-js/mdx"
+import { getAllChapters, getChapter, getQuizes } from "@/services/chapter"
 import _ from "lodash"
 import { Omega } from "lucide-react"
-import rehypeKatex from "rehype-katex"
-import remarkGfm from "remark-gfm"
-import remarkMath from "remark-math"
 
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { QuizMarkdown } from "@/components/markdown"
 import { Search } from "@/components/search"
 import { SidebarNav } from "@/components/sidebar-nav"
 
 export default async function Home({
   params: { id },
 }: {
-  params: { id?: string }
+  params: { id?: string[] }
 }) {
   const chapters = await getAllChapters()
-  const { content } = await getChapter(id)
-  //const mdxSource = await serialize(content)
-
-  const { default: MDXContent, ...rest } = await evaluate(content, {
-    ...runtime,
-    remarkPlugins: [remarkGfm, remarkMath],
-    rehypePlugins: [rehypeKatex],
-  })
+  const { content } = await getChapter(id?.[0])
+  const quizes = await getQuizes(id?.[0])
 
   return (
     <main className="container flex flex-col">
@@ -49,11 +35,11 @@ export default async function Home({
             <SidebarNav chapters={chapters} />
           </ScrollArea>
         </aside>
-        <article className="prose min-w-full py-6 dark:prose-invert">
+        <article className="prose min-w-full py-6 dark:prose-invert prose-p:text-primary/85">
           {
             //<MDXRemote {...mdxSource} components={MDX_COMPONENTS} />
           }
-          <MDXContent components={MDX_COMPONENTS} />
+          <QuizMarkdown content={content} quizes={quizes} />
         </article>
       </div>
     </main>
