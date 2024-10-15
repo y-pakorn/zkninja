@@ -33,11 +33,11 @@ export type ChoiceQuiz = {
    * ["1", "2", "3", "4"]
    * */
   distractors: ChoiceAnswer[]
-  /** List of correct answer
+  /** List of correct answer or correct answer. If answer is not a list, it will be radio button choice (select one).
    * ---
-   * ["5"]
+   * ["5"] | "5"
    * */
-  answers: ChoiceAnswer[]
+  answers: ChoiceAnswer[] | ChoiceAnswer
 }
 
 /** A quiz with open-ended questions */
