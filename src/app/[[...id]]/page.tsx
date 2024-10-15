@@ -35,10 +35,7 @@ export default async function Home({
             <SidebarNav chapters={chapters} />
           </ScrollArea>
         </aside>
-        <article className="prose min-w-full py-6 dark:prose-invert prose-p:text-primary/85">
-          {
-            //<MDXRemote {...mdxSource} components={MDX_COMPONENTS} />
-          }
+        <article className="prose min-w-full py-6 text-primary dark:prose-invert">
           <QuizMarkdown content={content} quizes={quizes} />
         </article>
       </div>

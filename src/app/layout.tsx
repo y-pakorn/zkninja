@@ -1,4 +1,5 @@
 import "@/styles/globals.css"
+import "katex/dist/katex.min.css"
 
 import type { Metadata, Viewport } from "next"
 import { GeistMono } from "geist/font/mono"
@@ -64,20 +65,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
-          integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+"
-          crossOrigin="anonymous"
-        />
-        <script
-          defer
-          src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
-          integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg"
-          crossOrigin="anonymous"
-        ></script>
-      </head>
+      <head />
       <body
         className={cn(
           "min-h-screen antialiased",
