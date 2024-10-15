@@ -1,0 +1,20 @@
+# Modulo: A Remainder
+
+## Definition
+
+Modulo is the remainder of a division.
+
+## Notation
+
+13 ≡ 1 mod 6, means 13 modulo 6 = 1, aka 1 is the remainder of 13 divided by 6
+
+## Why Matters?
+
+Why Modulo Matters in Cryptography
+
+Applying modulo to operations can transform an infinite set into a finite one. For example, in the group of integers under addition i.e.
+$\mathbb{(Z,+)}$, $\mathbb{Z}$ is infinite set of integers. In cryptography, we often need to work with finite sets because infinite sets can make computations impractical.
+
+Imagine trying to encrypt a message over and over. If you're working with an infinite set of numbers, the resulting number could get out of control, becoming impossible to manage. Modulo solves this by limiting the results to a fixed range, making computations much easier to handle.
+
+Modulo also boosts security by "hiding" the full result of a calculation, revealing only the remainder. This makes it harder for someone to figure out the original operation, adding a layer of protection. The difficulty in reversing certain operations, known as a "hardness assumption," is a key factor in keeping encrypted data secure (we’ll dig deeper into this concept later).

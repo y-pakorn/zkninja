@@ -1,0 +1,80 @@
+# Group: A tuple of a set and an operation
+
+## Definition
+
+Group is tuple of a set & an operation $o$ (Every time students hover cursor over that group, we show what 2 things it is defined on) like $\mathbb{G} = (\mathbb{R}, +)$,
+
+## Why Matters?
+
+Why Concept of Group Matters in Cryptography
+
+Group makes sure that performing operation on numbers follows specific rules, making it reliable for cryptographic system. Through this Group framework, a certain operation like "modulo" can help secure our cryptographic system. (More on this in Modulo Section)
+
+## Properties
+
+Group $\mathbb{G}$ must have these 4 following properties: (We need to make sure this "Group" is not just word in english but represent Mathematical structure --> can do by allowing us to hover cursor and it clearly shows it's a group, unlike when we hover cursor over word "group" and nothing happens.)
+
+### 1. Closure Property
+
+$\textbf{Definition}$ Closure Property: If you take any two numbers from the set and apply the operation, you'll always get a number that's still within the set.
+
+$\textbf{Math Expression}$: Closure Property: Given $(\mathbb{G}, o)$, For all $a,b \in \mathbb{G}$, $(a\ o\ b) \in \mathbb{G}$
+
+(We start with definition as "intuitive word", then showing "Math Expression" where we write it more succinctly using Math to onboard people to learn what those notations mean.)
+
+$\textbf{Quiz}$ : Given $\mathbb{T} = (\mathbb{Z},+)$, does $\mathbb{T}$ have closure property? yes
+(Note that we use notation $\mathbb{T}$ because we want to reserve $\mathbb{G}$ for only the tuple that is a group, we wouldn't spoil you since if it's a group, closure property already follows)
+(Again, here we hover $\mathbb{T}$ it shows that it's to show that a definition is defined under "integer" and "additive operation")
+
+$\textbf{Quiz}$ Which of these sets have closure property under "multiplicative operation"
+a.) $\mathbb{I}$ aka a set of irrational numbers. no, $\sqrt{2} * \sqrt{2} = 2$
+b.) $\mathbb{N}$ aka a set of natural numbers. yes
+c.) A set of prime numbers. no
+d.) A set of negative integers. no
+e.) A set of odd numbers. yes
+
+$\textbf{Notation}$: "For All" can be written as $\forall$. Example: For all a,b $\in$ G, can be written as $\forall$ a,b $\in$ G
+
+(Here every time this notation is shown later, we can let students click and it hop back here where its definition is explained, or can just allow students to hover cursor above this notation and show this definition, so they dont need to scroll back and forth.)
+
+### 2. Associativity Property
+
+$\textbf{Definition}$ Associativity: No matter how you place the parentheses when combining numbers, you'll get the same outcome.
+
+$\textbf{Math Expression}$ Associativity: Given $(\mathbb{G}, o)$, $\forall$ $a,b,c \in \mathbb{G}$, $(a\ o\ b)\ o\ c = a\ o\ (b\ o\ c)$
+
+$\textbf{Quiz}$ : Given $\mathbb{T} = (\mathbb{Z},-)$, does $\mathbb{T}$ have associative property? No, since (5-3)-2 = 0 but 5-(3-2) = 4
+
+$\textbf{Quiz}$: Which of these following tuples have asoociative property
+a. $(\mathbb{Z}, +)$ yes
+b. $(\mathbb{R}, /)$ no
+c. $(\mathbb{Z}, *)$ yes
+d. $(\{ Odd\ numbers \}, +)$ yes
+e. $(\mathbb{R}, -)$ no
+
+### 3. Identity Property
+
+$\textbf{Definition}$ Identity: There's a special number in the set that doesn't change other numbers when used in the operation like adding 0 or multiplying by 1 -- you get the original number back.
+
+$\textbf{Math Expression}$ Identity: There exists $e \in  \mathbb{G}$ such that $\forall a \in \mathbb{G},\ e\ o\ a = a\ o\ e = a$. We call this 'e' as 'Identity Element'
+
+$\textbf{Quiz}$ : Which of these following tuples have identity property:
+a. $(\mathbb{Z}, +)$ yes
+b. $(\mathbb{R}, *)$ yes
+c. $(\mathbb{Z}, -)$ no
+d. $(\mathbb{N}, +)$ no
+
+$\textbf{Notation}$: "There exists" can be written as $\exists$. Example: There exists $e \in  \mathbb{G}$, can be written as $\exists e \in \mathbb{G}$
+
+### 4. Inverse Property
+
+$\textbf{Definition}$ For every element in the set, there exists another element in the set that can be combined with it to produce the identity element, like adding a number and its negative to get 0, or multiplying a number by its reciprocal to get 1.
+
+$\textbf{Math Expression}$ Inverse: $\forall a \in \mathbb{G} , \exists a^{-1} \in  \mathbb{G}$ such that $a\ o\ a^{-1} = a^{-1}\ o\ a = e$. We call this $a^{-1}$ as an inverse of $a$
+
+$\textbf{Quiz}$ : Which of these following tuples have identity property:
+a. $(\mathbb{Z}, +)$ yes
+b. $(\mathbb{N}, +)$ no
+c. $(\mathbb{Z}, *)$ no
+d. $(\mathbb{R}, *)$ yes
+e. $(\{ Odd\ numbers \}, *)$ no

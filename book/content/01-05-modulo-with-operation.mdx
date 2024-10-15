@@ -1,0 +1,46 @@
+# Modulo with Operation
+
+We usually use Modulo with Operation. For example, Modular Addition, which is defined as $\forall\ a,b \in \mathbb{Z_n}$, modular addition results is calculated as (a+b) mod n
+
+## Example
+
+Modular Addition gives out finite set
+
+Consider the set $\{0,1,2,3,4\}$ with the operation of "Addition modulo 5." This set, unlike an infinite set of integers, is finite because any addition will result in a number that’s wrapped around within the set. For example, 3 + 4 = 7, then 7 mod 5 - 2, so 3+4 in this context is equivalent to 2 which already exists in the set
+
+Now we know that with modulo, we can have a group with finite set that is what cryptography operation needs. We introduce a concept of Cyclic Group & generator
+
+## Definition
+
+Cyclic Group & Generator
+
+A group is **cyclic** if there exists an element (**"a generator"**) such that every other element of the group can be written as a power of this generator.
+
+## Math Expression
+
+Consider the Group $\mathbb{G} =  \{1,2,3,...,p−1\}$ with "Modular Multiplication" Operation. $\mathbb{G}$ is cyclic if and only if there exists the element $𝑔$ (called a generator), such that $\{g^1 \ mod\ p\ , g^2 \ mod\ p\ , g^3 \ mod\ p\ , ...,\ g^{p-1}\ mod\ p\}$ = $\mathbb{S}$
+
+## Example
+
+Let’s say we work in $\mathbb{Z^*_7}$ (integers modulo 7, excluding 0), which consists of {1,2,3,4,5,6}. We can check if 3 is a generator as follows:
+$3^1\ mod\ 7 = 3,\ 3^2\ mod\ 7 = 2,\ 3^3\ mod\ 7 = 6,\  3^4\ mod\ 7 = 4,\ 3^5\ mod\ 7 = 5,\ 3^6\ mod\ 7 = 1$
+
+Since 3 generates all elements of the group $\mathbb{Z^*_7}$, 3 is a generator. Not every element will do this — for instance, 2 in the same group only generates some elements.
+
+The concept of Generator allows us to visit every possible element in our group by simple multiplication. This brings us to one of the most important assumptions in cryptography: the discrete logarithm assumption.”
+
+## Definition
+
+Discrete Log Assumption: hard to know $x$ from $y$ when $y = g^x\ mod\ p$, where $g$ is a generator, and $p$ is large prime
+
+## Intuition Behind Difficulty
+
+Imagine standing in a circle with numbered positions (the group elements) and repeatedly stepping forward (exponentiation) from some starting point. If I tell you where I end up (the result of exponentiation), it’s very hard for you to figure out how many steps I took (the exponent).
+
+While it’s easy to compute $g^x\ mod\ p$ (even for very large 𝑝), going in reverse — that is, finding 𝑥 given $g^x\ mod\ p$ — is much harder. In the next chapter, we will see that this assumption is a cornerstone of cryptography and underpins protocols like Diffie-Hellman and elliptic curve cryptography.”
+
+## Reflection
+
+That's a lot of concepts: Modulo, Modular Operation, Cyclic Group, Generator and Hardness assumption? How does each of these contribute to security of cryptographic system in general?
+
+(Need to avoid run-on sentences aks just keep introducing concept without making students realize the implication... make students always ask why does this matter? --> some reflective questions along the way)
