@@ -75,3 +75,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+blockquote p::before,
+blockquote p::after {
+  content: none;
+  quotes: none;
+}

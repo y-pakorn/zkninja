@@ -3,11 +3,13 @@ import { MDX_COMPONENTS } from "@/useMDXComponents"
 import { evaluate } from "@mdx-js/mdx"
 import _ from "lodash"
 import { MDXComponents } from "mdx/types"
+import RMD from "react-markdown"
 import rehypeKatex from "rehype-katex"
 import remarkGfm from "remark-gfm"
 import remarkMath from "remark-math"
 
 import { Quiz } from "@/types/quiz"
+import { cn } from "@/lib/utils"
 
 import { QuizCard } from "./quiz-card"
 
@@ -52,4 +54,22 @@ const Markdown = async ({ content, components }: MarkdownProps) => {
 }
 Markdown.displayName = "Markdown"
 
-export { Markdown, QuizMarkdown }
+const ClientMarkdown = ({
+  content,
+  className,
+}: {
+  content: string
+  className?: string
+}) => {
+  return (
+    <RMD
+      remarkPlugins={[remarkGfm, remarkMath]}
+      rehypePlugins={[rehypeKatex]}
+      className={cn("whitespace-normal", className)}
+    >
+      {content}
+    </RMD>
+  )
+}
+
+export { Markdown, QuizMarkdown, ClientMarkdown }

@@ -11,6 +11,7 @@
     "format:check": "pnpm prettier ./src --check"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.67",
     "@dwesley/linereader": "^0.1.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/mdx": "^3.0.1",
@@ -26,6 +27,7 @@
     "@radix-ui/react-visually-hidden": "^1.1.0",
     "@t3-oss/env-nextjs": "^0.11.1",
     "@types/mdx": "^2.0.13",
+    "ai": "^3.4.10",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "1.0.0",
@@ -38,6 +40,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-latex-next": "^3.0.0",
+    "react-markdown": "^9.0.1",
     "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",

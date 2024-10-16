@@ -1,13 +1,18 @@
 "use client"
 
 import { ReactNode, useCallback, useMemo, useState } from "react"
+import { usePathname } from "next/navigation"
+import { streamQuizResult } from "@/services/ai-quiz"
+import { readStreamableValue } from "ai/rsc"
 import _ from "lodash"
-import { Check, X } from "lucide-react"
+import { Check, Loader2, X } from "lucide-react"
 import Latex from "react-latex-next"
+import { toast } from "sonner"
 
 import { ChoiceAnswer, ChoiceQuiz, OpenEndedQuiz } from "@/types/quiz"
 import { cn } from "@/lib/utils"
 
+import { ClientMarkdown } from "./markdown"
 import { Button } from "./ui/button"
 import { Checkbox } from "./ui/checkbox"
 import { Label } from "./ui/label"
@@ -185,21 +190,53 @@ ChoiceQuizContent.displayName = "ChoiceQuizContent"
 
 const OpenEndedQuizContent = ({ quiz }: { quiz: OpenEndedQuiz }) => {
   const [answer, setAnswer] = useState<string>("")
-  const submit = useCallback(() => {}, [])
+  const [response, setResponse] = useState<string>("")
+
+  const pathname = usePathname()
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const submit = useCallback(async () => {
+    setIsSubmitting(true)
+
+    try {
+      const { stream } = await streamQuizResult(
+        pathname.replace("/", ""),
+        quiz.id,
+        answer
+      )
+      for await (const r of readStreamableValue(stream)) {
+        if (!r) continue
+        setResponse((prev) =>
+          (prev + r.delta).replace("<START>", "").replace("<END>", "").trim()
+        )
+      }
+    } catch (e: any) {
+      toast.error("Error", {
+        description: e.message,
+      })
+    } finally {
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+    }
+  }, [pathname, answer, quiz])
+
+  console.log(response)
 
   return (
     <div className="space-y-2">
       {answer && (
-        <div className="whitespace-pre rounded-md border px-4 py-2 text-sm">
-          <Latex>{answer}</Latex>
+        <div className="whitespace-pre rounded-md border px-4 text-sm">
+          <ClientMarkdown content={answer} />
         </div>
       )}
       <Textarea
         value={answer}
-        placeholder="Type your answer here. You can use LaTeX syntax, e.g. $\frac{1}{2}$"
+        placeholder="Type your answer here. You can use LaTeX syntax, e.g. $\frac{1}{2}$, or markdown syntax, e.g. *this is bold*."
         onChange={(e) => setAnswer(e.target.value)}
         className="min-h-10"
       />
+      <ClientMarkdown content={response} />
       <div className="mt-2 flex gap-2">
         <Button
           size="xs"
@@ -207,12 +244,20 @@ const OpenEndedQuizContent = ({ quiz }: { quiz: OpenEndedQuiz }) => {
           className="ml-auto"
           onClick={() => {
             setAnswer("")
+            setResponse("")
+            setIsSubmitted(false)
           }}
+          disabled={isSubmitting}
         >
           Reset
         </Button>
-        <Button size="xs" onClick={submit}>
-          Submit
+        <Button
+          size="xs"
+          onClick={submit}
+          disabled={isSubmitting || isSubmitted}
+        >
+          Submit{" "}
+          {isSubmitting && <Loader2 className="ml-1 size-3 animate-spin" />}
         </Button>
       </div>
     </div>
