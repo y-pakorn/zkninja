@@ -171,6 +171,7 @@ const ChoiceQuizContent = ({ quiz }: { quiz: ChoiceQuiz }) => {
             setSelected([])
             setIsSubmitted(false)
           }}
+          disabled={selected.length === 0}
         >
           Reset
         </Button>
@@ -179,6 +180,7 @@ const ChoiceQuizContent = ({ quiz }: { quiz: ChoiceQuiz }) => {
           onClick={() => {
             setIsSubmitted(true)
           }}
+          disabled={isSubmitted || selected.length === 0}
         >
           Submit
         </Button>
