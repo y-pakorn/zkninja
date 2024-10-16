@@ -31,10 +31,10 @@ const Search = ({ chapters }: { chapters: Chapter[] }) => {
   return (
     <>
       <Button
-        variant="outline"
+        variant="outline-opaque"
         size="xs"
         onClick={() => setOpen(true)}
-        className="w-64 bg-secondary/50 text-muted-foreground"
+        className="w-64"
       >
         Search for chapter...
         <code className="ml-auto rounded-sm bg-secondary px-1.5 py-0.5 text-xs text-secondary-foreground">

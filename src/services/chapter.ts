@@ -1,6 +1,7 @@
 "use server"
 
 import { promises as fs } from "fs"
+import { cache } from "react"
 import { LineReader } from "@dwesley/linereader"
 import _ from "lodash"
 import yaml from "yaml"
@@ -11,7 +12,7 @@ import { DEFAULT_CHAPTER } from "@/config/chapter"
 
 const CHAPTER_NO_REGEX = /(\d\d)/g
 
-export const getAllChapters = async (): Promise<Chapter[]> => {
+export const getAllChapters = cache(async (): Promise<Chapter[]> => {
   const contents = await fs.readdir("book/content")
   const chapters = (await Promise.all(
     contents.map(async (f) => {
@@ -27,26 +28,26 @@ export const getAllChapters = async (): Promise<Chapter[]> => {
     })
   ).then((c) => _.filter(c, (v) => v.title))) as Chapter[]
   return chapters
-}
+})
 
-export const getChapter = async (
-  id: string = DEFAULT_CHAPTER
-): Promise<ChapterContent> => {
-  const content = await fs.readFile(`book/content/${id}.mdx`, "utf8")
-  return {
-    content,
+export const getChapter = cache(
+  async (id: string = DEFAULT_CHAPTER): Promise<ChapterContent> => {
+    const content = await fs.readFile(`book/content/${id}.mdx`, "utf8")
+    return {
+      content,
+    }
   }
-}
+)
 
-export const getQuizes = async (
-  id: string = DEFAULT_CHAPTER
-): Promise<Record<string, Quiz>> => {
-  const name = id.match(CHAPTER_NO_REGEX)?.join("-")
-  if (!name) return {}
-  const text = await fs
-    .readFile(`book/quiz/${name}.yaml`, "utf8")
-    .catch(() => null)
-  if (!text) return {}
-  const quizes = yaml.parse(text)
-  return _.keyBy(quizes, "id")
-}
+export const getQuizes = cache(
+  async (id: string = DEFAULT_CHAPTER): Promise<Record<string, Quiz>> => {
+    const name = id.match(CHAPTER_NO_REGEX)?.join("-")
+    if (!name) return {}
+    const text = await fs
+      .readFile(`book/quiz/${name}.yaml`, "utf8")
+      .catch(() => null)
+    if (!text) return {}
+    const quizes = yaml.parse(text)
+    return _.keyBy(quizes, "id")
+  }
+)
