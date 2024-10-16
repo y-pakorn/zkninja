@@ -1,12 +1,12 @@
 - id: 1
-  kind: openended
-  question: Write a set that represents square of integers
+  kind: choice
+  question: Given $\mathbb{T} = (\mathbb{Z},+)$, does $\mathbb{T}$ have closure property?
   distractors:
     - No
   answers: Yes
 - id: 2
-  kind: openended
-  question: Write a set that represents irrational numbers
+  kind: choice
+  question: Which of these sets have closure property under "multiplicative operation"
   distractors:
     - text: $\mathbb{I}$ aka a set of irrational numbers
       reason: $\sqrt{2} * \sqrt{2} = 2$
@@ -16,6 +16,48 @@
     - A set of odd numbers
     - A set of positive integers
     - $\mathbb{N}$ aka a set of natural numbers
+
 - id: 3
   kind: open-ended
   question: What is the closure property? Explain in a simple way and terms.
+
+- id: 4
+  kind: choice
+  question: Given $\mathbb{T} = (\mathbb{Z},-)$, does $\mathbb{T}$ have associative property?
+  distractors:
+    - text: No
+      reason: Since (5-3)-2 = 0 but 5-(3-2) = 4
+  answers: Yes
+
+- id: 5
+  kind: choice
+  question: Which of these following tuples have asoociative property
+  distractors:
+    - $(\mathbb{R}, /)$ 
+    - $(\mathbb{R}, -)$ 
+  answers:
+    - $(\mathbb{Z}, +)$
+    - $(\mathbb{Z}, *)$
+    - $(\{ Odd\ numbers \}, +)$
+
+- id: 6
+  kind: choice
+  question: Which of these following tuples have identity property
+  distractors:
+    - $(\mathbb{Z}, -)$
+    - $(\mathbb{N}, +)$
+  answers:
+    - $(\mathbb{Z}, +)$
+    - $(\mathbb{R}, *)$
+
+- id: 7
+  kind: choice
+  question: Which of these following tuples have inverse property
+  distractors:
+    - $(\mathbb{N}, +)$
+    - $(\mathbb{Z}, *)$
+    - $(\{ Odd\ numbers \}, *)$
+  answers:
+    - $(\mathbb{Z}, +)$
+    - $(\mathbb{R}, *)$
+

@@ -1,0 +1,12 @@
+- id: 1
+  kind: choice
+  question: Which of these following tuples are a group?
+  distractors:
+    - text: $(\mathbb{R}, *)$
+      reason: 0 doesn't have a multiplicative inverse
+    - text: $(\mathbb{N}, +)$
+      reason: No identity element nor inverse
+    - text: $(\mathbb{Z}, *)$
+      reason: Not all integers have a multiplicative inverse
+
+  answers: $(\mathbb{R - {0}}, *)$
