@@ -12,7 +12,7 @@ Since there are so many types of numbers (integers, decimals, rationals, etc. ),
 
 ## Notations
 
-The symbol $\in$ means "is a member of a set." So, if something is on the left side of $\in$, it belongs to the collection (set) on the right side.
+The symbol $\in$ means "is a member of a set." Basically, the element on the left side of $\in$ belongs to the collection (set) on the right side.
 
 ### Example on Notation
 
@@ -20,15 +20,42 @@ The symbol $\in$ means "is a member of a set." So, if something is on the left s
 Given the set $\mathbb{S} = \{1, 4, 7, 8, 9\}$:
 We can write
 4 $\in \mathbb{S}$ (4 is in the set $\mathbb{S}$)
+9 $\in \mathbb{S}$ (9 is in the set $\mathbb{S}$)
+0 $\notin \mathbb{S}$ (0 is not in the set $\mathbb{S}$)
 5 $\notin \mathbb{S}$ (5 is not in the set $\mathbb{S}$)
 
-Besides defining the set by listing all its members like $\mathbb{S} = \{1, 4, 7, 8, 9\}$ explicitly, we can define sets more broadly, using rules or patterns that describe their shared properties.
 
-### Example of defining the set
+## How to Define Set
+As seen above, we can define set by listing all of its members like $\mathbb{S} = \{1, 4, 7, 8, 9\}$ explicitly. However, writing all of set's members is not really possible if the set has so many members or event infinite. Instead, we can define sets more broadly, using patterns or criteria that describe their shared properties.
 
-(Here again, clarify what the example is for)
-$\mathbb{Z} = \{..., -3, -2, -1, 0, 1, 2, 3,...\}$ represents the set of all integers (whole numbers).
-$\mathbb{Z^+} = \{1, 2, 3,...\}$ represents the set of positive integers. (Another common notation for positive integers or natural numbers is $\mathbb{N}$.)
-$\mathbb{Q} = \{x : x = a/b;\ a, b \in \mathbb{Z},\ b \neq 0\}$ represents the set of rational numbers, which includes any number that can be written as a fraction of two integers.
+### Example on How to Define Set
+- By Pattern
+    We list only some members enough to make people able to recognize the pattern, hence being able to imply the rest in ...
 
-Sets lets us define and organize collections of numbers based on shared characteristics. But in cryptography, we are not only interested in what collection of numbers we are using, but also how these numbers interact with each other. This is where operation comes in. When we combine a set with an operation, under specific rules, we arrive at a special mathematical structure called a 'Group.' Groups are the building blocks of many cryptographic algorithms, offering powerful properties we’ll soon explore."
+    - $\mathbb{Z} = \{..., -3, -2, -1, 0, 1, 2, 3,...\}$ represents the set of all integers (whole numbers). 
+
+    - $\mathbb{Z^+} = \{1, 2, 3,...\}$ represents the set of positive integers. (Another common notation for positive integers or natural numbers is $\mathbb{N}$.)
+    - Even Numbers: $\{..., -4, -2, 0, 2, 4, 6,...\}$ represents the set of all even integers.
+    - Prime Numbers: $\{2, 3, 5, 7, 11, 13, 17, 19,...\}$ represents the set of prime numbers.
+    - Fibonacci Numbers: $\{0, 1, 1, 2, 3, 5, 8, 13,...\}$ represents the set of Fibonacci numbers, where each number is the sum of the two preceding numbers.
+- By Criteria
+    We explicitly state the criteria such that every number that satisfies the criteria belong to the set. 
+
+    - $\mathbb{Q} = \{x : x = a/b;\ a, b \in \mathbb{Z},\ b \neq 0\}$ represents the set of rational numbers, which includes any number that can be written as a fraction of two integers.
+    - Even Numbers: 
+    $\{x : x = 2n; n \in \mathbb{Z}\}$ represents the set of all even integers, where each element is a multiple of 2.
+
+    - Prime Numbers:
+$\{p : p \in \mathbb{Z}^+,\ p > 1,\ \forall d \in \mathbb{Z}^+,\ (d\mid p \implies d = 1\ \text{or}\ d = p)\}$ represents the set of prime numbers, where a number is only divisible by 1 and itself.
+(Notation:  $A \implies B$ is equivalent to "If A, then B")
+    - Fibonacci Numbers:
+$\{F_n : F_0 = 0,\ F_1 = 1,\ F_n = F_{n-1} + F_{n-2},\ n \in \mathbb{Z}^+\}$ represents the Fibonacci sequence, where each element is defined recursively.
+
+
+<Quiz id="1" />
+
+<Quiz id="2" />
+
+Sets let us define and organize collections of numbers based on shared characteristics. But in cryptography, we are not only interested in what collection of numbers we are using, but also how these numbers interact with each other. This is where operation comes in. 
+
+When we combine a set with an operation, under specific rules, we arrive at a special mathematical structure called a 'Group.' Groups are the building blocks of many cryptographic algorithms, offering powerful properties we’ll soon explore.

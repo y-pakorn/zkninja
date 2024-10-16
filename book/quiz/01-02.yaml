@@ -1,12 +1,12 @@
 - id: 1
-  kind: choice
-  question: Given $\mathbb{T} = (\mathbb{Z},+)$, does $\mathbb{T}$ have closure property?
+  kind: openended
+  question: Write a set that represents square of integers
   distractors:
     - No
   answers: Yes
 - id: 2
-  kind: choice
-  question: Which of these sets have closure property under "multiplicative operation"
+  kind: openended
+  question: Write a set that represents irrational numbers
   distractors:
     - text: $\mathbb{I}$ aka a set of irrational numbers
       reason: $\sqrt{2} * \sqrt{2} = 2$
