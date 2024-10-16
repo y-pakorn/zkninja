@@ -10,6 +10,9 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     mdxRs: true,
+    outputFileTracingIncludes: {
+      "/": ["./book/**/*"],
+    },
   },
 }
 
