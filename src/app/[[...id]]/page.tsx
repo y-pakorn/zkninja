@@ -6,6 +6,22 @@ import { QuizMarkdown } from "@/components/markdown"
 import { NavBar } from "@/components/nav-bar"
 import { SidebarNav } from "@/components/sidebar-nav"
 
+export async function generateStaticParams() {
+  const chapters = await getAllChapters()
+
+  return [
+    {
+      id: undefined,
+    },
+    {
+      id: [],
+    },
+    ...chapters.map((c) => ({
+      id: [c.href],
+    })),
+  ]
+}
+
 export default async function Home({
   params: { id },
 }: {
