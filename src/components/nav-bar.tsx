@@ -5,12 +5,13 @@ import { FaGithub } from "react-icons/fa"
 import { Chapter } from "@/types/chapter"
 import { siteConfig } from "@/config/site"
 
+import { ModeToggle } from "./mode-toggle"
 import { Search } from "./search"
-import { Button, buttonVariants } from "./ui/button"
+import { buttonVariants } from "./ui/button"
 
 const NavBar = ({ chapters }: { chapters: Chapter[] }) => {
   return (
-    <nav className="sticky top-0 z-50 flex h-14 items-center gap-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="sticky top-0 z-50 flex h-14 items-center gap-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:gap-4">
       <Link href="/" className="inline-flex items-center gap-2 font-bold">
         <Omega className="stroke-2" />
         ZK Ninja
@@ -24,10 +25,12 @@ const NavBar = ({ chapters }: { chapters: Chapter[] }) => {
         className={buttonVariants({
           size: "icon-xs",
           variant: "outline-opaque",
+          className: "shrink-0",
         })}
       >
         <FaGithub className="size-4" />
       </Link>
+      <ModeToggle />
     </nav>
   )
 }

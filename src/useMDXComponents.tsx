@@ -1,9 +1,14 @@
 import Image, { ImageProps } from "next/image"
 import type { MDXComponents } from "mdx/types"
 
-import { H1, H2, H3, H4, P, Quote } from "./components/ui/typography"
+import { Separator } from "./components/ui/separator"
 
-export const MDX_COMPONENTS: MDXComponents = {} as const
+export const MDX_COMPONENTS: MDXComponents = {
+  hr: (props) => <Separator {...props} className="my-8" />,
+  blockquote: (props) => (
+    <blockquote {...props} className="my-4 border-l-4 border-border pl-4" />
+  ),
+} as const
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

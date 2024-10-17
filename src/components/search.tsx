@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { SearchIcon } from "lucide-react"
 
 import { Chapter } from "@/types/chapter"
 
@@ -34,12 +35,20 @@ const Search = ({ chapters }: { chapters: Chapter[] }) => {
         variant="outline-opaque"
         size="xs"
         onClick={() => setOpen(true)}
-        className="w-64"
+        className="hidden w-64 md:inline-flex"
       >
         Search for chapter...
         <code className="ml-auto rounded-sm bg-secondary px-1.5 py-0.5 text-xs text-secondary-foreground">
           ⌘K
         </code>
+      </Button>
+      <Button
+        variant="outline-opaque"
+        size="icon-xs"
+        onClick={() => setOpen(true)}
+        className="md:hidden"
+      >
+        <SearchIcon className="size-4" />
       </Button>
       <CommandDialog open={isOpen} onOpenChange={setOpen}>
         <CommandInput placeholder="Search for chapter..." />

@@ -366,6 +366,9 @@ const RandomQuizContent = ({ quiz }: { quiz: RandomQuiz }) => {
       ) : !question ? (
         <div className="flex-col items-center space-y-2 text-center">
           <div>{quiz.label || "Are you ready to take on more challenges?"}</div>
+          <div className="text-sm italic text-muted-foreground">
+            Select a difficulty level to get started.
+          </div>
           <div className="flex flex-wrap justify-center gap-2">
             {_.map(RandomQuizDifficulty, (v) => (
               <Button
