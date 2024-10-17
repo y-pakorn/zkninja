@@ -37,3 +37,28 @@ Reference Content: {reference_content}
 Question: {question}
 Answer: {answer}
 `
+
+export const QUESTION_PROMPT = `
+You will be given a reference_content.
+Your task is to provide a question that is related to the reference_content.
+
+Generate a question that are related to the reference_content.
+The difficulty of the questions should be {difficulty}.
+
+Where difficulty is one of the following:
+- easy: questions that can be answered by a simple fact or definition.
+- medium: questions that require some reasoning or understanding.
+- hard: questions that require deep understanding or critical thinking.
+- expert: questions that require expert knowledge or research.
+If difficulty is not in the list, the difficulty should be considered by its context.
+
+Response must be in markdown format and equational symbols must be in LaTeX format.
+
+Example response: Explain what is considered a element in $\\mathbb{G}$.
+
+Reference Content: {reference_content}
+
+{context}
+
+Provide your questions below:
+`

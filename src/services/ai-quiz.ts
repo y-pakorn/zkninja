@@ -2,8 +2,9 @@
 
 import { streamText } from "ai"
 import { createStreamableValue } from "ai/rsc"
+import _ from "lodash"
 
-import { JUDGE_PROMPT } from "@/config/prompt"
+import { JUDGE_PROMPT, QUESTION_PROMPT } from "@/config/prompt"
 
 import { model } from "./ai"
 import { getChapter, getQuizes } from "./chapter"
@@ -14,7 +15,7 @@ type StreamQuizResponse = {
 
 export const streamQuizResult = async (
   id: string,
-  quizId: string,
+  question: string,
   answer: string
 ) => {
   const stream = createStreamableValue<StreamQuizResponse>()
@@ -24,19 +25,60 @@ export const streamQuizResult = async (
     throw new Error("Chapter not found")
   }
 
-  const quiz = await getQuizes(id).then((quizes) => quizes[quizId])
+  ;(async () => {
+    try {
+      const { fullStream } = await streamText({
+        model,
+        prompt: JUDGE_PROMPT.replaceAll("{reference_content}", chapter.content)
+          .replaceAll("{question}", question)
+          .replaceAll("{answer}", answer),
+      })
 
-  if (!quiz) {
-    throw new Error("Quiz not found")
+      for await (const detail of fullStream) {
+        if (detail.type === "text-delta") {
+          stream.update({
+            delta: detail.textDelta,
+          })
+        }
+      }
+    } catch (e) {
+      throw e
+    } finally {
+      stream.done()
+    }
+  })()
+
+  return {
+    stream: stream.value,
+  }
+}
+
+export const streamRandomQuizQuestion = async (
+  id: string,
+  difficulty: string,
+  context?: string
+) => {
+  const stream = createStreamableValue<StreamQuizResponse>()
+  const chapter = await getChapter(id)
+
+  if (!chapter) {
+    throw new Error("Chapter not found")
   }
 
   ;(async () => {
     try {
       const { fullStream } = await streamText({
         model,
-        prompt: JUDGE_PROMPT.replaceAll("{reference_content}", chapter.content)
-          .replaceAll("{question}", quiz.question)
-          .replaceAll("{answer}", answer),
+        prompt: QUESTION_PROMPT.replaceAll(
+          "{reference_content}",
+          chapter.content
+        )
+          .replaceAll("{difficulty}", difficulty)
+          .replaceAll("{context}", context || ""),
+        temperature: 0.9,
+        topP: 0.95,
+        frequencyPenalty: 0,
+        presencePenalty: 0.1,
       })
 
       for await (const detail of fullStream) {

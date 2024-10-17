@@ -31,6 +31,14 @@ const QuizMarkdown = async ({
       components={{
         ...components,
         Quiz: ({ id }: { id: string }) => <QuizCard quiz={quizes[id]} />,
+        RandomQuiz: () => (
+          <QuizCard
+            quiz={{
+              id: "",
+              kind: "random",
+            }}
+          />
+        ),
       }}
     />
   )
@@ -66,6 +74,7 @@ const ClientMarkdown = ({
       remarkPlugins={[remarkGfm, remarkMath]}
       rehypePlugins={[rehypeKatex]}
       className={cn("whitespace-normal", className)}
+      components={MDX_COMPONENTS as any}
     >
       {content}
     </RMD>

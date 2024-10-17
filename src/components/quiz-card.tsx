@@ -1,12 +1,15 @@
 import { ReactNode } from "react"
 import _ from "lodash"
-import Latex from "react-latex-next"
 import { match, P } from "ts-pattern"
 
 import { Quiz } from "@/types/quiz"
 import { cn } from "@/lib/utils"
 
-import { ChoiceQuizContent, OpenEndedQuizContent } from "./quiz-content"
+import {
+  ChoiceQuizContent,
+  OpenEndedQuizContent,
+  RandomQuizContent,
+} from "./quiz-content"
 import { Badge } from "./ui/badge"
 
 const QuizCardWrapper = ({
@@ -47,20 +50,16 @@ const QuizCard = ({ quiz }: { quiz?: Quiz }) => {
           )
           .with({ kind: "choice" }, () => "Multiple Choice")
           .with({ kind: "open-ended" }, () => "Open Ended")
+          .with({ kind: "random" }, () => "Random")
           .exhaustive()}
       </Badge>
-      <div>
-        <span className="mr-2 italic">Quiz:</span>
-        <span className="font-semibold">
-          <Latex>{quiz.question}</Latex>
-        </span>
-      </div>
-      {quiz.context && (
-        <div className="text-sm text-muted-foreground">
-          <Latex>{quiz.context}</Latex>
-        </div>
-      )}
       {match(quiz)
+        .with(
+          {
+            kind: "random",
+          },
+          (q) => <RandomQuizContent quiz={q} />
+        )
         .with({ kind: "choice" }, (q) => <ChoiceQuizContent quiz={q} />)
         .with({ kind: "open-ended" }, (q) => <OpenEndedQuizContent quiz={q} />)
         .exhaustive()}

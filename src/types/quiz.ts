@@ -1,4 +1,4 @@
-export type Quiz = ChoiceQuiz | OpenEndedQuiz
+export type Quiz = ChoiceQuiz | OpenEndedQuiz | RandomQuiz
 
 export type ChoiceAnswer =
   | string
@@ -58,4 +58,31 @@ export type OpenEndedQuiz = {
    * Group theory is a branch of mathematics that studies the algebraic structure known as a group.
    * */
   context?: string
+}
+
+/** A random quiz */
+export type RandomQuiz = {
+  /** Unique identifier */
+  id: string
+  /** Group identifier */
+  group?: string
+  /** Type of quiz */
+  kind: "random"
+  /** Label for the quiz before the generated question
+   * ---
+   * Are you ready to take more quiz?
+   * */
+  label?: string
+  /** Additional context for AI to generate question
+   * ---
+   * Provide a question related to property of $G$.
+   * */
+  context?: string
+}
+
+export enum RandomQuizDifficulty {
+  Easy = "easy",
+  Medium = "medium",
+  Hard = "hard",
+  Expert = "expert",
 }
