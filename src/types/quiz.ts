@@ -1,4 +1,8 @@
-export type Quiz = ChoiceQuiz | OpenEndedQuiz | RandomQuiz
+export type Quiz =
+  | ChoiceQuiz
+  | OpenEndedQuiz
+  | RandomQuiz
+  | StudentTeacherChatQuiz
 
 export type ChoiceAnswer =
   | string
@@ -90,4 +94,30 @@ export enum RandomQuizDifficulty {
   Medium = "medium",
   Hard = "hard",
   Expert = "expert",
+}
+
+/** A quiz with chat based questions, simulating a conversation between a student and a teacher */
+export type StudentTeacherChatQuiz = {
+  /** Unique identifier */
+  id: string
+  /** Group identifier */
+  group?: string
+  /** Type of quiz */
+  kind: "student-teacher-chat"
+  /** First message of the student, default to STUDENT_FIRST_MSG
+   * ---
+   * Hey! :blush: So, we're diving into {topic} today, huh? Cool! I'm pretty new to this stuff. Mind breaking it down for me? Keep it simple though – my brain's still warming up! :sweat_smile:
+   * */
+  firstMessage?: string
+  /** Topic of the quiz
+   * ---
+   * Set, Group, and Modulo operation
+   * */
+  topic: string
+  /** Whether to include all chapter of the section in the quiz refernece content, false by default
+   * ---
+   * true: Include 1, 1.1, 1.2, 1.3, 1.4 (this)
+   * false: Only include 1.4 (this)
+   * */
+  section?: boolean
 }

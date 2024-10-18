@@ -1,0 +1,4 @@
+- id: 1
+  kind: student-teacher-chat
+  topic: Set, Group, and Modulo operation
+  section: true

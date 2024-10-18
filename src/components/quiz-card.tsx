@@ -5,6 +5,7 @@ import { match, P } from "ts-pattern"
 import { Quiz } from "@/types/quiz"
 import { cn } from "@/lib/utils"
 
+import { StudentTeacherChat } from "./chat/student-user-chat"
 import {
   ChoiceQuizContent,
   OpenEndedQuizContent,
@@ -39,6 +40,10 @@ const QuizCard = ({ quiz }: { quiz?: Quiz }) => {
         Quiz Not Found
       </QuizCardWrapper>
     )
+
+  if (quiz.kind === "student-teacher-chat") {
+    return <StudentTeacherChat quiz={quiz} />
+  }
 
   return (
     <QuizCardWrapper className="space-y-2">

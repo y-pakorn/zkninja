@@ -290,6 +290,7 @@ const OpenEndedQuizContent = ({ quiz }: { quiz: OpenEndedQuiz }) => {
     </div>
   )
 }
+OpenEndedQuizContent.displayName = "OpenEndedQuizContent"
 
 const RandomQuizContent = ({ quiz }: { quiz: RandomQuiz }) => {
   const [question, setQuestion] = useState<string>("")
@@ -454,5 +455,6 @@ const RandomQuizContent = ({ quiz }: { quiz: RandomQuiz }) => {
     </>
   )
 }
+RandomQuizContent.displayName = "RandomQuizContent"
 
 export { ChoiceQuizContent, OpenEndedQuizContent, RandomQuizContent }
