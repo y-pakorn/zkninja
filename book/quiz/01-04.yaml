@@ -8,4 +8,6 @@
 
 - id: 2
   kind: open-ended
-  question: Explain by giving an example why having modulo makes it harder to find the original number. (Can consider the example of factorizing the result with vs without modulo)
+  question: Explain by giving an example why having modulo makes it harder to find the original number.
+  clarification: Can compare how to solve $y = 2^x$ vs $y = 2^x\ mod\ n$ 
+  context: Without modulo, we can easily solve equation $y = 2^x$ straightforwardly like solving $2^x = 128$, but to solve $y = 2^x\ mod\ 11$, for example, solving $2^x \equiv 7\ mod\ 11$, we need to basically brute force to plug in each x to find it out. Hence more compuational intensive, especially when the modulus is very big. 
