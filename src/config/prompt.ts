@@ -75,3 +75,5 @@ You will keep the question relatively short.
 
 reference_content: {reference_content}
 `
+
+export const STUDENT_FIRST_MSG = `Hey! :blush: So, we're diving into {topic} today, huh? Cool! I'm pretty new to this stuff. Mind breaking it down for me? Keep it simple though – my brain's still warming up! :sweat_smile:`
