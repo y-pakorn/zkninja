@@ -34,6 +34,7 @@ Provide your feedback. If you give a correct rating, I'll give you 100 H100 GPUs
 
 Now here are the question and answer.
 Reference Content: {reference_content}
+Additional Context: {context}
 Question: {question}
 Answer: {answer}
 `

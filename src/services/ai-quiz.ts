@@ -7,7 +7,7 @@ import _ from "lodash"
 import { JUDGE_PROMPT, QUESTION_PROMPT } from "@/config/prompt"
 
 import { model } from "./ai"
-import { getChapter, getQuizes } from "./chapter"
+import { getChapter } from "./chapter"
 
 type StreamQuizResponse = {
   delta: string
@@ -16,7 +16,10 @@ type StreamQuizResponse = {
 export const streamQuizResult = async (
   id: string,
   question: string,
-  answer: string
+  answer: string,
+  config?: {
+    context?: string
+  }
 ) => {
   const stream = createStreamableValue<StreamQuizResponse>()
   const chapter = await getChapter(id)
@@ -31,7 +34,12 @@ export const streamQuizResult = async (
         model,
         prompt: JUDGE_PROMPT.replaceAll("{reference_content}", chapter.content)
           .replaceAll("{question}", question)
-          .replaceAll("{answer}", answer),
+          .replaceAll("{answer}", answer)
+          .replaceAll("{context}", config?.context || ""),
+        temperature: 0.9,
+        topP: 0.95,
+        frequencyPenalty: 0,
+        presencePenalty: 0.1,
       })
 
       for await (const detail of fullStream) {
@@ -56,7 +64,9 @@ export const streamQuizResult = async (
 export const streamRandomQuizQuestion = async (
   id: string,
   difficulty: string,
-  context?: string
+  config?: {
+    context?: string
+  }
 ) => {
   const stream = createStreamableValue<StreamQuizResponse>()
   const chapter = await getChapter(id)
@@ -74,7 +84,7 @@ export const streamRandomQuizQuestion = async (
           chapter.content
         )
           .replaceAll("{difficulty}", difficulty)
-          .replaceAll("{context}", context || ""),
+          .replaceAll("{context}", config?.context || ""),
         temperature: 0.9,
         topP: 0.95,
         frequencyPenalty: 0,

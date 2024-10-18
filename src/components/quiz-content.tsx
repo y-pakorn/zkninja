@@ -79,21 +79,10 @@ const formatChoiceAnswer = (
   return answer
 }
 
-const QuizHeader = ({
-  question,
-  context,
-}: {
-  question: string
-  context?: string
-}) => {
+const QuizHeader = ({ question }: { question: string }) => {
   return (
     <div>
       <ClientMarkdown content={question} />
-      {context && (
-        <div className="text-sm text-muted-foreground">
-          <ClientMarkdown content={context} />
-        </div>
-      )}
     </div>
   )
 }
@@ -119,7 +108,7 @@ const ChoiceQuizContent = ({ quiz }: { quiz: ChoiceQuiz }) => {
 
   return (
     <>
-      <QuizHeader question={quiz.question} context={quiz.context} />
+      <QuizHeader question={quiz.question} />
       {isRadio ? (
         <RadioGroup
           onValueChange={(value) => {
@@ -231,7 +220,10 @@ const OpenEndedQuizContent = ({ quiz }: { quiz: OpenEndedQuiz }) => {
       const { stream } = await streamQuizResult(
         pathname.replace("/", ""),
         quiz.question,
-        answer
+        answer,
+        {
+          context: quiz.context,
+        }
       )
       for await (const r of readStreamableValue(stream)) {
         if (!r) continue
@@ -251,7 +243,7 @@ const OpenEndedQuizContent = ({ quiz }: { quiz: OpenEndedQuiz }) => {
 
   return (
     <div className="space-y-2">
-      <QuizHeader question={quiz.question} context={quiz.context} />
+      <QuizHeader question={quiz.question} />
       {answer && (
         <div className="whitespace-pre rounded-md border px-4 text-sm">
           <ClientMarkdown content={answer} />
@@ -309,7 +301,9 @@ const RandomQuizContent = ({ quiz }: { quiz: RandomQuiz }) => {
         const { stream } = await streamRandomQuizQuestion(
           pathname.replace("/", ""),
           difficulty || selectedDifficulty,
-          quiz.context
+          {
+            context: quiz.context,
+          }
         )
         for await (const r of readStreamableValue(stream)) {
           if (!r) continue

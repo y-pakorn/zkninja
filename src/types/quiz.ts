@@ -23,11 +23,6 @@ export type ChoiceQuiz = {
    * How many elements are in $G$?
    * */
   question: string
-  /** Context to provide
-   * ---
-   * $G$ is a group.
-   * */
-  context?: string
   /** List of wrong answers
    * ---
    * ["1", "2", "3", "4"]
@@ -53,7 +48,7 @@ export type OpenEndedQuiz = {
    * Explain the concept of a group.
    * */
   question: string
-  /** Context to provide
+  /** Additional context for AI
    * ---
    * Group theory is a branch of mathematics that studies the algebraic structure known as a group.
    * */
