@@ -7,7 +7,7 @@ import _ from "lodash"
 import { JUDGE_PROMPT, QUESTION_PROMPT } from "@/config/prompt"
 
 import { model } from "./ai"
-import { getChapter } from "./chapter"
+import { getChapter, getQuizes } from "./chapter"
 
 type StreamQuizResponse = {
   delta: string
@@ -15,11 +15,13 @@ type StreamQuizResponse = {
 
 export const streamQuizResult = async (
   id: string,
-  question: string,
-  answer: string,
-  config?: {
-    context?: string
-  }
+  config:
+    | {
+        question: string
+        context?: string
+      }
+    | string,
+  answer: string
 ) => {
   const stream = createStreamableValue<StreamQuizResponse>()
   const chapter = await getChapter(id)
@@ -28,14 +30,23 @@ export const streamQuizResult = async (
     throw new Error("Chapter not found")
   }
 
+  const quiz = _.isString(config)
+    ? await getQuizes(config).then((q) => {
+        const quiz = q[config]
+        if (!quiz || quiz.kind !== "open-ended")
+          throw new Error("Quiz not found")
+        return quiz
+      })
+    : config
+
   ;(async () => {
     try {
       const { fullStream } = await streamText({
         model,
         prompt: JUDGE_PROMPT.replaceAll("{reference_content}", chapter.content)
-          .replaceAll("{question}", question)
+          .replaceAll("{question}", quiz.question)
           .replaceAll("{answer}", answer)
-          .replaceAll("{context}", config?.context || ""),
+          .replaceAll("{context}", quiz.context || ""),
         temperature: 0.9,
         topP: 0.95,
         frequencyPenalty: 0,
@@ -63,10 +74,12 @@ export const streamQuizResult = async (
 
 export const streamRandomQuizQuestion = async (
   id: string,
-  difficulty: string,
-  config?: {
-    context?: string
-  }
+  config:
+    | {
+        context?: string
+      }
+    | string,
+  difficulty: string
 ) => {
   const stream = createStreamableValue<StreamQuizResponse>()
   const chapter = await getChapter(id)
@@ -74,6 +87,14 @@ export const streamRandomQuizQuestion = async (
   if (!chapter) {
     throw new Error("Chapter not found")
   }
+
+  const quiz = _.isString(config)
+    ? await getQuizes(id).then((d) => {
+        const quiz = d[config]
+        if (!quiz || quiz.kind !== "random") throw new Error("Quiz not found")
+        return quiz
+      })
+    : config
 
   ;(async () => {
     try {
@@ -84,7 +105,7 @@ export const streamRandomQuizQuestion = async (
           chapter.content
         )
           .replaceAll("{difficulty}", difficulty)
-          .replaceAll("{context}", config?.context || ""),
+          .replaceAll("{context}", quiz.context || ""),
         temperature: 0.9,
         topP: 0.95,
         frequencyPenalty: 0,

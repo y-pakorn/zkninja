@@ -219,11 +219,8 @@ const OpenEndedQuizContent = ({ quiz }: { quiz: OpenEndedQuiz }) => {
     try {
       const { stream } = await streamQuizResult(
         pathname.replace("/", ""),
-        quiz.question,
-        answer,
-        {
-          context: quiz.context,
-        }
+        quiz.id,
+        answer
       )
       for await (const r of readStreamableValue(stream)) {
         if (!r) continue
@@ -300,10 +297,8 @@ const RandomQuizContent = ({ quiz }: { quiz: RandomQuiz }) => {
       try {
         const { stream } = await streamRandomQuizQuestion(
           pathname.replace("/", ""),
-          difficulty || selectedDifficulty,
-          {
-            context: quiz.context,
-          }
+          quiz.id || {},
+          difficulty || selectedDifficulty
         )
         for await (const r of readStreamableValue(stream)) {
           if (!r) continue
@@ -332,7 +327,9 @@ const RandomQuizContent = ({ quiz }: { quiz: RandomQuiz }) => {
     try {
       const { stream } = await streamQuizResult(
         pathname.replace("/", ""),
-        question,
+        {
+          question,
+        },
         answer
       )
       for await (const r of readStreamableValue(stream)) {
