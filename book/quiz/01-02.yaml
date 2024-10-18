@@ -49,8 +49,11 @@
   answers:
     - $(\mathbb{Z}, +)$
     - $(\mathbb{R}, *)$
-
 - id: 7
+  kind: open-ended
+  question: Since $/forall a \in \mathbb{Z}, a - 0 = a$. Why $(\mathbb{Z}, -)$ doesn't have identity property. 
+
+- id: 8
   kind: choice
   question: Which of these following tuples have inverse property
   distractors:

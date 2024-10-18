@@ -1,18 +1,7 @@
 - id: 1
-  kind: choice
+  kind: open-ended
   question: Write a set that represents square of integers
-  distractors:
-    - No
-  answers: Yes
+
 - id: 2
-  kind: choice
+  kind: open-ended
   question: Write a set that represents irrational numbers
-  distractors:
-    - text: $\mathbb{I}$ aka a set of irrational numbers
-      reason: $\sqrt{2} * \sqrt{2} = 2$
-    - A set of prime numbers
-    - A set of negative integers
-  answers:
-    - A set of odd numbers
-    - A set of positive integers
-    - $\mathbb{N}$ aka a set of natural numbers
