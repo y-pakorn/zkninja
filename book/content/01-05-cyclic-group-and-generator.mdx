@@ -1,12 +1,4 @@
-# Modulo with Operation
-
-We usually use Modulo with Operation. For example, Modular Addition, which is defined as $\forall\ a,b \in \mathbb{Z_n}$, modular addition results is calculated as (a+b) mod n
-
-## Example
-
-Modular Addition gives out finite set
-
-Consider the set $\{0,1,2,3,4\}$ with the operation of "Addition modulo 5." This set, unlike an infinite set of integers, is finite because any addition will result in a number that’s wrapped around within the set. For example, 3 + 4 = 7, then 7 mod 5 - 2, so 3+4 in this context is equivalent to 2 which already exists in the set
+# Cyclic Group & Generator
 
 Now we know that with modulo, we can have a group with finite set that is what cryptography operation needs. We introduce a concept of Cyclic Group & generator
 
@@ -27,11 +19,19 @@ $3^1\ mod\ 7 = 3,\ 3^2\ mod\ 7 = 2,\ 3^3\ mod\ 7 = 6,\  3^4\ mod\ 7 = 4,\ 3^5\ m
 
 Since 3 generates all elements of the group $\mathbb{Z^*_7}$, 3 is a generator. Not every element will do this — for instance, 2 in the same group only generates some elements.
 
+<Quiz id="1" />
+
 The concept of Generator allows us to visit every possible element in our group by simple multiplication. This brings us to one of the most important assumptions in cryptography: the discrete logarithm assumption.”
+
 
 ## Definition
 
-Discrete Log Assumption: hard to know $x$ from $y$ when $y = g^x\ mod\ p$, where $g$ is a generator, and $p$ is large prime
+### Discrete Log Assumption
+Hard to know $x$ from $y$ when $y = g^x\ mod\ p$, where $g$ is a generator, and $p$ is large prime
+### Discrete Log Problem
+A specific math problem that asks you to solve $y = g^x\ mod\ p$, , where $g$ is a generator, and $p$ is large prime
+
+<Quiz id="2" />
 
 ## Intuition Behind Difficulty
 
@@ -39,8 +39,4 @@ Imagine standing in a circle with numbered positions (the group elements) and re
 
 While it’s easy to compute $g^x\ mod\ p$ (even for very large 𝑝), going in reverse — that is, finding 𝑥 given $g^x\ mod\ p$ — is much harder. In the next chapter, we will see that this assumption is a cornerstone of cryptography and underpins protocols like Diffie-Hellman and elliptic curve cryptography.”
 
-## Reflection
-
-That's a lot of concepts: Modulo, Modular Operation, Cyclic Group, Generator and Hardness assumption? How does each of these contribute to security of cryptographic system in general?
-
-(Need to avoid run-on sentences aks just keep introducing concept without making students realize the implication... make students always ask why does this matter? --> some reflective questions along the way)
+<Quiz id="3" />

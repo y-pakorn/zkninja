@@ -1,0 +1,11 @@
+- id: 1
+  kind: open-ended
+  question: Give another example of cyclic group and its corresponding generator, including explaining why that group is cyclic and why that number is a generator.
+
+- id: 2
+  kind: open-ended
+  question: What's the difference between Discrete Logarithm Problem and Discrete Logarithm Assumption?
+
+- id: 3
+  kind: open-ended
+  question: Why does the Discrete Logarithm Problem require a Cyclic Group and a Generator?
