@@ -123,7 +123,7 @@ const StudentTeacherChat = ({ quiz }: { quiz: StudentTeacherChatQuiz }) => {
                   ) : (
                     <ClientMarkdown
                       content={message.content}
-                      className="my-0 max-w-[80%] rounded-md bg-secondary p-2 text-sm prose-p:my-0"
+                      className="my-0 max-w-[95%] rounded-md bg-secondary p-2 text-sm prose-p:my-0 md:max-w-[80%]"
                     />
                   )}
                 </div>
@@ -133,7 +133,7 @@ const StudentTeacherChat = ({ quiz }: { quiz: StudentTeacherChatQuiz }) => {
               <>
                 <ClientMarkdown
                   content={message.content}
-                  className="my-0 max-w-[80%] rounded-md bg-secondary p-2 text-sm prose-p:my-0"
+                  className="my-0 max-w-[95%] rounded-md bg-secondary p-2 text-sm prose-p:my-0 md:max-w-[80%]"
                 />
               </>
             )}
@@ -153,7 +153,7 @@ const StudentTeacherChat = ({ quiz }: { quiz: StudentTeacherChatQuiz }) => {
       >
         <Textarea
           ref={textareaRef}
-          className="min-h-12"
+          className="md:min-h-14"
           placeholder="Chat with your student. You can use LaTeX syntax, e.g. $\frac{1}{2}$, or markdown syntax, e.g. *this is bold*."
           onKeyPress={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
