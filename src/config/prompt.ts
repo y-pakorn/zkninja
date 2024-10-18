@@ -79,7 +79,9 @@ You will assume a fun, curious, and naive personality to encourage the user to e
 
 You will keep the question relatively short.
 
+{context}
+
 reference_content: {reference_content}
 `
 
-export const STUDENT_FIRST_MSG = `Hey! :blush: So, we're diving into {topic} today, huh? Cool! I'm pretty new to this stuff. Mind breaking it down for me? Keep it simple though – my brain's still warming up! :sweat_smile:`
+export const STUDENT_FIRST_MSG = `Hey! 😳 So, we're diving into {topic} today, huh? Cool! I'm pretty new to this stuff. Mind breaking it down for me? Keep it simple though – my brain's still warming up! 😜`

@@ -120,4 +120,10 @@ export type StudentTeacherChatQuiz = {
    * false: Only include 1.4 (this)
    * */
   section?: boolean
+
+  /** Additional context for AI to generate question
+   * ---
+   * Direct conversation in line of how $G$ is related to $H$.
+   * */
+  context?: string
 }

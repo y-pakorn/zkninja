@@ -35,7 +35,22 @@ export const getChapter = cache(
     const content = await fs.readFile(`book/content/${id}.mdx`, "utf8")
     return {
       content,
+      id,
     }
+  }
+)
+
+export const getAllSectionContentByChapterId = cache(
+  async (id: string): Promise<ChapterContent[]> => {
+    const allChapters = await getAllChapters()
+    const firstChapterId = Number(id.split("-")[0])
+    const matchedChapters = allChapters.filter(
+      (chapter) => chapter.prefix[0] === Number(firstChapterId)
+    )
+    const chapterContents = await Promise.all(
+      matchedChapters.map((chapter) => getChapter(chapter.href))
+    )
+    return chapterContents
   }
 )
 

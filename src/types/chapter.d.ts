@@ -5,5 +5,6 @@ export type Chapter = {
 }
 
 export type ChapterContent = {
+  id: string
   content: string
 }

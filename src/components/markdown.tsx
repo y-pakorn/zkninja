@@ -1,3 +1,4 @@
+import { memo } from "react"
 import * as runtime from "react/jsx-runtime"
 import { MDX_COMPONENTS } from "@/useMDXComponents"
 import { evaluate } from "@mdx-js/mdx"
@@ -62,23 +63,19 @@ const Markdown = async ({ content, components }: MarkdownProps) => {
 }
 Markdown.displayName = "Markdown"
 
-const ClientMarkdown = ({
-  content,
-  className,
-}: {
-  content: string
-  className?: string
-}) => {
-  return (
-    <RMD
-      remarkPlugins={[remarkGfm, remarkMath]}
-      rehypePlugins={[rehypeKatex]}
-      className={cn("whitespace-normal", className)}
-      components={MDX_COMPONENTS as any}
-    >
-      {content}
-    </RMD>
-  )
-}
+const ClientMarkdown = memo(
+  ({ content, className }: { content: string; className?: string }) => {
+    return (
+      <RMD
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+        className={cn("whitespace-normal", className)}
+        components={MDX_COMPONENTS as any}
+      >
+        {content}
+      </RMD>
+    )
+  }
+)
 
 export { Markdown, QuizMarkdown, ClientMarkdown }
