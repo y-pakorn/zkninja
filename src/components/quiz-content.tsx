@@ -79,10 +79,21 @@ const formatChoiceAnswer = (
   return answer
 }
 
-const QuizHeader = ({ question }: { question: string }) => {
+const QuizHeader = ({
+  question,
+  clarification,
+}: {
+  question: string
+  clarification?: string
+}) => {
   return (
     <div>
       <ClientMarkdown content={question} />
+      {clarification && (
+        <div className="text-sm text-muted-foreground">
+          <ClientMarkdown content={clarification} />
+        </div>
+      )}
     </div>
   )
 }
@@ -108,7 +119,7 @@ const ChoiceQuizContent = ({ quiz }: { quiz: ChoiceQuiz }) => {
 
   return (
     <>
-      <QuizHeader question={quiz.question} />
+      <QuizHeader question={quiz.question} clarification={quiz.clarification} />
       {isRadio ? (
         <RadioGroup
           onValueChange={(value) => {
@@ -240,7 +251,7 @@ const OpenEndedQuizContent = ({ quiz }: { quiz: OpenEndedQuiz }) => {
 
   return (
     <div className="space-y-2">
-      <QuizHeader question={quiz.question} />
+      <QuizHeader question={quiz.question} clarification={quiz.clarification} />
       {answer && (
         <div className="whitespace-pre rounded-md border px-4 text-sm">
           <ClientMarkdown content={answer} />
