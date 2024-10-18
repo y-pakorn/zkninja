@@ -155,7 +155,7 @@ const StudentTeacherChat = ({ quiz }: { quiz: StudentTeacherChatQuiz }) => {
           ref={textareaRef}
           className="md:min-h-14"
           placeholder="Chat with your student. You can use LaTeX syntax, e.g. $\frac{1}{2}$, or markdown syntax, e.g. *this is bold*."
-          onKeyPress={(e) => {
+          onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault()
               formRef.current?.requestSubmit()
