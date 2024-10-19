@@ -1,6 +1,7 @@
 export type Chapter = {
   prefix: number[]
   title: string
+  description: string
   href: string
 }
 
