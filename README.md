@@ -2,7 +2,7 @@
 
 ## Description
 
-zk.ninja is an open-source, AI-assisted active learning platform for cryptography education. It uses language models to create interactive learning experiences that aim to help users better understand cryptographic concepts.
+[zk.ninja](https://zk.ninja/) is an open-source, AI-assisted active learning platform for cryptography education. It uses language models to create interactive learning experiences that aim to help users better understand cryptographic concepts.
 
 The platform is built on the principle that active engagement with the material leads to improved comprehension and retention of cryptographic principles.
 
