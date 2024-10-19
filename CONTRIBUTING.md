@@ -81,9 +81,12 @@ docs(readme): update installation instructions
 
 ### Content Style Guide
 
-- Use clear, concise language
-- Break complex ideas into digestible chunks
-- Include examples where appropriate
-- For quizzes:
-  - Ensure questions are unambiguous
-  - Provide comprehensive explanations for correct answers
+For detailed guidelines on creating and formatting content for zk.ninja, please refer to our [Content Guidelines](CONTENT_GUIDELINES.md). This comprehensive guide covers:
+
+- Directory structure and file naming conventions
+- Content formatting and Markdown usage
+- Quiz creation and different quiz types
+- Writing style and best practices
+- Cryptography-specific guidelines
+
+Please review these guidelines before contributing any educational content or quizzes to ensure consistency and quality across the platform.
