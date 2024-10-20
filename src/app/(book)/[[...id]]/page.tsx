@@ -61,7 +61,7 @@ export default async function Home({
   const prevChapter: Chapter | undefined = chapters[currentChapterIdx - 1]
 
   return (
-    <article className="prose min-w-full py-6 text-primary dark:prose-invert">
+    <article className="prose min-w-full py-6 text-primary dark:prose-invert prose-headings:text-primary">
       <QuizMarkdown content={content} quizes={quizes} />
 
       <div className="flex *:no-underline">

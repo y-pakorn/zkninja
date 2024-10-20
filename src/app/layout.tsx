@@ -2,6 +2,7 @@ import "@/styles/globals.css"
 import "katex/dist/katex.min.css"
 
 import type { Metadata, Viewport } from "next"
+import { getAllChapters } from "@/services/chapter"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GeistMono } from "geist/font/mono"
@@ -10,6 +11,7 @@ import { GeistSans } from "geist/font/sans"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/sonner"
+import { NavBar } from "@/components/nav-bar"
 import { ThemeProvider } from "@/components/theme-provider"
 
 interface RootLayoutProps {
@@ -65,10 +67,19 @@ export const viewport: Viewport = {
   ],
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const chapters = await getAllChapters()
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        {/*"Copy tex script"*/}
+        <script
+          src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js"
+          integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen antialiased",
@@ -82,7 +93,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="container flex flex-col">
+            <NavBar chapters={chapters} />
+            {children}
+          </div>
           <Toaster />
         </ThemeProvider>
         <Analytics />

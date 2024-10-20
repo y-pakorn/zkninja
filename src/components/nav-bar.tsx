@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Omega } from "lucide-react"
-import { FaGithub } from "react-icons/fa"
+import { FaGithub, FaUserNinja } from "react-icons/fa"
 
 import { Chapter } from "@/types/chapter"
 import { siteConfig } from "@/config/site"
@@ -11,9 +11,9 @@ import { buttonVariants } from "./ui/button"
 
 const NavBar = ({ chapters }: { chapters: Chapter[] }) => {
   return (
-    <nav className="sticky top-0 z-50 flex h-14 items-center gap-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:gap-4">
+    <nav className="sticky top-0 z-50 flex h-16 items-center gap-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <Link href="/" className="inline-flex items-center gap-2 font-bold">
-        <Omega className="stroke-2" />
+        <span>🥷</span>
         ZK Ninja
       </Link>
       <div className="flex-1" />

@@ -20,12 +20,12 @@ const SidebarNav = ({ chapters }: { chapters: Chapter[] }) => {
   )
 
   return (
-    <div className="w-full space-y-1.5 text-sm text-muted-foreground">
+    <div className="w-full space-y-2 text-sm text-muted-foreground">
       {groupped[0][1].map((chapter) => (
         <SidebarNavItem chapter={chapter} key={chapter.href} />
       ))}
       {groupped.slice(1).map(([id, chapters]) => (
-        <div key={id} className="flex flex-col space-y-1">
+        <div key={id} className="flex flex-col space-y-1.5">
           <SidebarNavItem chapter={chapters[0]} />
           {chapters.slice(1).map((chapter) => (
             <SidebarNavItem
