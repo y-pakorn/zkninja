@@ -1,0 +1,5 @@
+- id: 1
+  kind: open-ended
+  question: Explain why Diffe-Hellman Key Exchange make sense i.e. Alice and Bob arrive at the same shared secret.
+  context: >
+    Yes, because both Alice and Bob arrive at the same $S$ due to $(g^b)^a\ mod\ p\ =\ (g^a)^b\ mod\ p$

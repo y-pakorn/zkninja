@@ -1,0 +1,12 @@
+- id: 1
+  kind: open-ended
+  question: Create your own cipher text with plaintext I LOVE YOU and the key is 10
+  context: >
+   The answer is S VYFO IYE
+
+- id: 2
+  kind: open-ended
+  question: Why is Caesar Cipher a Symmetric Encryption?
+  context: >
+    The same key (shift by 3) is used for both encryption and decryption.
+The process relies on shared knowledge of the key between sender and receiver.

@@ -1,0 +1,30 @@
+#  Diffie-Hellman Key Exchange
+
+## What can this protocol do?
+
+Diffie-Hellman Key Exchange allows two people (or systems) who have never met to establish a shared secret over a public communication channel. Even if an eavesdropper is monitoring the conversation, they won’t be able to determine the shared secret.
+
+## Why Matters?
+
+With shared secret from DHKE, we can leverage the technique called "symmetric encryption" to create the secure channel of communication only between parties that hold this shared secret such that other people cannot see what they communicate to each other (More on symmetric encryption later)
+With secure communication, one of the most popular use case is "Messaging Apps" since End-to-end encryption protocols in apps like WhatsApp use concepts derived from DHKE to ensure that messages can only be read by the sender and receiver.  
+
+## Setup
+We work within a cyclic group $\mathbb{G}=\{1,2,…,p−1\}$ with the operation being modular multiplication. Here, $p$ is a large public prime number (longer than 2948 bits), and $g$ is a generator of the group.
+
+### Private Values:
+
+Party A (Alice) chooses a private value $a \in \mathbb{G}$
+Party B (Bob) chooses a private value $b \in \mathbb{G}$
+
+### Public Values:
+
+Alice computes her public value $A = g^a\ mod\ p$ and sends it to Bob.
+Bob computes his public value $B = g^b\ mod\ p$ and sends it to Alice.
+
+### Shared Secret:
+
+Alice computes $S = B^a\ mod\ p$
+Bob computes $S = A^b\ mod\ p$
+
+<Quiz id="1" />
