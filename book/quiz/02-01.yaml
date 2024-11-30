@@ -1,9 +1,9 @@
-- id: 2
+- id: 1
   kind: open-ended
   question: :Intuitively, why do you think we require $p$ to be a very big prime number
   context: >
     Because discrete logarithm hardness makes sense in big prime number.
-- id: 1
+- id: 2
   kind: open-ended
   question: Explain why Diffe-Hellman Key Exchange make sense i.e. Alice and Bob arrive at the same shared secret.
   context: >
