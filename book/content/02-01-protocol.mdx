@@ -6,11 +6,12 @@ Diffie-Hellman Key Exchange allows two people (or systems) who have never met to
 
 ## Why Matters?
 
-With shared secret from DHKE, we can leverage the technique called "symmetric encryption" to create the secure channel of communication only between parties that hold this shared secret such that other people cannot see what they communicate to each other (More on symmetric encryption later)
-With secure communication, one of the most popular use case is "Messaging Apps" since End-to-end encryption protocols in apps like WhatsApp use concepts derived from DHKE to ensure that messages can only be read by the sender and receiver.  
+With shared secret from DHKE, we can leverage the technique called "symmetric encryption" to create the secure channel of communication between parties that hold this shared secret such that other people cannot see what they communicate to each other (More on symmetric encryption later, make it clickable to symmetric encryption section??). This secure communication is used in "Messaging Apps" like WhatsApp to ensure that messages can only be read by the sender and receiver.  
 
 ## Setup
 We work within a cyclic group $\mathbb{G}=\{1,2,…,p−1\}$ with the operation being modular multiplication. Here, $p$ is a large public prime number (longer than 2948 bits), and $g$ is a generator of the group.
+
+<Quiz id="1" />
 
 ### Private Values:
 
@@ -27,4 +28,4 @@ Bob computes his public value $B = g^b\ mod\ p$ and sends it to Alice.
 Alice computes $S = B^a\ mod\ p$
 Bob computes $S = A^b\ mod\ p$
 
-<Quiz id="1" />
+<Quiz id="2" />
