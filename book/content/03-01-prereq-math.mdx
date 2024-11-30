@@ -1,35 +1,50 @@
 # Some Necessary Math Backgrounds
+
 Before getting to RSA, let's make sure to visit some quic Math concepts that are necessary to understand the protocol.
 
 ## Greatest Common Divisor (GCD)
+
 GCD is the largest positive integer that divides two or more integers without leaving a remainder.
+
 ### Example
+
 GCD(4, 8) = 4 because 4 is the largest number that divides both 4 and 8
+
 GCD(34, 51) = 17 because 17 is the largest number that divides both 34 and 51
 
 <Quiz id="1" />
 
 ## Co-Prime
+
 We called two integers $a, b$ co-prime to each other when GCD(a,b) = 1
 
 ## Euler’s Totient Function
+
 TODO: should we explore this in detail instead of just giving formula?
 
 Euler Totient Function $\phi(n)$ is the function that counts the integers less than $n$ that are coprime to $n$. 
 
 Given $n = \prod_{i=1}^{r}p_i^{k_i}$, 
+
 $\phi(n) =\phi(p_1^{k_1}) \phi(p_2^{k_2})... \phi(p_r^{k_r})$
-= $p_1^{k_1}(1-\frac{1}{p_1})p_2^{k_2}(1-\frac{1}{p_2})... p_r^{k_r}(1-\frac{1}{p_r})$
-=$p_1^{k_1}p_2^{k_2}...p_r^{k_r}(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_r})$
-=$n(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_r})$
+
+$= p_1^{k_1}(1-\frac{1}{p_1})p_2^{k_2}(1-\frac{1}{p_2})... p_r^{k_r}(1-\frac{1}{p_r})$
+
+$= p_1^{k_1}p_2^{k_2}...p_r^{k_r}(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_r})$
+
+$= n(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_r})$
 
 ## Euler’s Theorem
-For any co-prime $a,n$. This statement is true: $a^{\phi(n)} \equiv 1\ mod\ n$
+
+For any co-prime $a, n$. This statement is true: $a^{\phi(n)} \equiv 1\ mod\ n$
 
 ## Integer Factorization Problem (IFP)
+
 The Integer Factorization Problem asserts that:
 
-Given: A large integer $n=p×q$ (e.g. 2048 bits)., where $p,q$ are large prime number.
+Given: A large integer $n=p*q$ (e.g. 2048 bits)., where $p,q$ are large prime number.
+
 Assumption: It is computationally infeasible to factor 
+
 $n$ into $pq$ in polynomial time with classical computers.
 

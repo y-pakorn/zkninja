@@ -13,26 +13,36 @@ RSA is widely used in securing email information. When Alice wants to send her e
 ## Setup
 
 ### Private Key and Public Key Generation
+
 - Choose Two Large Prime Numbers:
+
 Select two large primes $p$ and $q$. Their product $n=p⋅q$ will define the modulus. $n$ must be large (at least 2048 bits) to ensure security.
 
 - Calculate Euler’s Totient:
+
 Compute $\phi(n) = (p-1)(q-1)$
+
 - Choose Public Exponent $e$
-Select an integer $e$ such that $1< e < \phi(n)$ and 
-gcd$(e, \phi(n))$ = 1. A common choice is $e=65537$, as it is efficient for encryption and verification.
+
+Select an integer $e$ such that $1< e < \phi(n)$ and gcd$(e, \phi(n))$ = 1. A common choice is $e=65537$, as it is efficient for encryption and verification.
+
 - Calculate Private Exponent $d$
+
 Compute $d$, the modular multiplicative inverse of $e$ modulo $\phi(n)$ This satisfies:
 $d⋅e≡1 (mod ϕ(n)).$ Note that this step is pretty easy due to a thing called "Extended Euclidean Algorithm" (more on this later..)
 
 
 Key Pair:
-Public Key: $(e,n)$
-Private Key: $(d,n)$
+
+- Public Key: $(e,n)$
+
+- Private Key: $(d,n)$
 
 ### Encryption
+
 - Represent the message $M$ as an integer $m$ such that 
 $0≤m<n.$
+
 - Compute the ciphertext $c$ using the recipient’s public key: $c≡m^e\ mod\ n$ 
 
 ### Decryption
