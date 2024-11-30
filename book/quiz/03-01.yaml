@@ -3,7 +3,7 @@
   question: What is GCD(97, 31)
   distractors:
     - No GCD
-    - 3
-    - 31
-  answers:
-    - 1
+    - "3"
+    - "31"
+  answers: "1"
+
