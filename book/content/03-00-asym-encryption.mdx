@@ -1,0 +1,15 @@
+# Asymmetric Encryption!
+
+We already learned about symmetric encryption that allows people to both encrypt and decrypt a plaintext with the same key. Although this may sound convenient, don't forget that we need to find a secure way to share the key among them. Yes, we already learned Diffie-Hellman Key Exchange, but that means that we also need some communication to set up this DHKE protocol to get shared secret before proceeding to symmetric encryption. The question is "Is it possible to share some secure message without ever communicating with each other before"? 
+
+Yes, That is Asymmetric Encryption!
+
+At its core, asymmetric encryption uses a key pair:
+
+- A public key, which is shared openly and used for encryption.
+
+- A private key, kept secret and used for decryption.
+
+<Quiz id="1" />
+
+Unlike Symmetric Cryptography in previous chapter that the real-world protocol is very complicated, here we will dive deep into asymmetric cryptography protocol that really gets used in real world: RSA (Rivest–Shamir–Adleman)

@@ -1,0 +1,5 @@
+- id: 1
+  kind: open-ended
+  question: Explain how asymmetric encryption makes it possible for people who want to send secure message to each other can do that without the need to talk to each other before?
+  context: >
+    With this behavior, asymmetric encryption makes it possible for anyone to broadcast their public key, such that anyone wanting to send secure message to them, can just use that public key to encrypt the message. Only the one that has private key corresponding to that public key can decrypt the message!

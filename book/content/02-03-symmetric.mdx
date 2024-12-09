@@ -1,0 +1,72 @@
+#  Symmetric Encryption.
+
+As mentioned earlier in this chapter that Diffie-Hellman Key Exchange is mostly useful because it is used together with a thing called "Symmetric Encryption" Let's now dive deeper what this "Symmetric Encryption" really is.
+
+## Definition
+
+Symmetric encryption is a method of securing data where the same key is used for both encryption (locking the message) and decryption (unlocking the message). It is the oldest and simplest form of encryption and is widely used for securing communication. This type of symmetric encryption is so old that it can be dated back 2000 years ago, as you will see in the following example.
+
+## Example: Julius Caesar Cipher
+
+The Caesar Cipher, named after Julius Caesar, is one of the earliest and simplest forms of symmetric encryption. Intuitively, this encryption was born out of the use of military in such a way that it expects the message to be only be read by the sender and the receiver who has the key. With this encryption, we can be sure that even though the enemy captures the message itself, they cannot understand what the message really means since they don't know the key. Caesar Cipher involves shifting each letter of the plaintext by a fixed number of positions in the alphabet.
+
+### Encryption Process
+
+- Key Selection: Decide on a shift value (e.g., 3).
+
+- Encrypt: Shift each letter of the plaintext by the chosen value.
+
+### Decryption Process
+
+- Use the Same Key: The receiver shifts the letters of the ciphertext back by the chosen value.
+
+#### Example:
+
+Plaintext: ATTACK AT DAWN
+
+Key: 3. Hence we can write the shifting tables as follows
+
+Plaintext Alphabet: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+Cipher Alphabet (Shift by 3): D E F G H I J K L M N O P Q R S T U V W X Y Z A B C
+
+##### Encrypt
+
+Encrypt the message: ATTACK AT DAWN
+
+ATTACK: A $\rightarrow$ D, T $\rightarrow$ W, T $\rightarrow$ W, A $\rightarrow$ D, C $\rightarrow$ F, K $\rightarrow$ N
+
+AT: A $\rightarrow$ D, T $\rightarrow$ W
+
+DAWN: D $\rightarrow$ G, A $\rightarrow$ D, W $\rightarrow$ Z, N $\rightarrow$ Q
+
+Hence, Ciphertext: DWWDFN DW GDZQ
+
+##### Decrypt
+
+Decrypt the ciphertext: DWWDFN DW GDZQ
+
+DWWDFN: D $\rightarrow$ A, W $\rightarrow$ T, W $\rightarrow$ T, D $\rightarrow$ A, F $\rightarrow$ C, N $\rightarrow$ K
+
+DW: D $\rightarrow$ A, W $\rightarrow$ T
+
+GDZQ: G $\rightarrow$ D, D $\rightarrow$ A, Z $\rightarrow$ W, Q $\rightarrow$ N
+
+Hence, Plaintext: ATTACK AT DAWN
+
+<Quiz id="1" />
+<Quiz id="2" />
+
+### Is Caesar Cipher really secure? 
+
+You might already see that it is pretty easy to break Caesar Cipher due to its small key space (only 25 possible shifts). Hence, it is possible for people without the key to be able to deduce the actual plaintext from the cipher text itself. This can be easily done as follows.
+
+- Bruteforce all possible keys (there are only 26 alphabets, hence only 25 key possible, excluding using no-shift as a key)
+
+- Moreover, to speed up the brute-force approach, an attacker can use a technique called frequency analysis. Basically, associating the alphabets that occur a lot in ciphertext with the alphabets that are also popular in most words/ sentences (for example: a, e, i, o, u), hence we scope down the possible keys.
+
+Therefore, we cannot really use Caesar Cipher for secure Symmetric Encryption in our daily life (especially with computer that can easily bruteforce all possible 25 keys very fast)
+
+In reality, we use modern symmetric encryption algorithms, like AES (Advanced Encryption Standard), which requires highly complex mathematical transformations and large keys to ensure security. This encryption protocol is in fact very popular to use with Diffie Hellman Key Exchange, aka use Diffie Hellman Key Exchange to generate common key for this encryption. However, AES is very complicated, so we will leave this to later chapter. 
+
+

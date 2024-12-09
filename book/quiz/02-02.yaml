@@ -1,0 +1,13 @@
+- id: 1
+  kind: open-ended
+  question: What if she tries to derive b from $A = g^a\ mod\ p$  and $S = g^{ab}\ mod\ p$, is that easy to do? If not, explain why.
+  context: >
+    To derive b from $A = g^a\ mod\ p$  and $S = g^{ab}\ mod\ p$, is literally solving b from $S = A^b\ mod\ p$. Although Alice already knows S, A, p. This still reflects Discrete Logarithm Problem, hence very hard to break this security.
+
+- id: 2
+  kind: open-ended
+  question: We already see from above that it's hard to derive $a$ or $b$ through equation, however, wouldn't it be possible for the outsider or Alice and Bob to just guess the private value and brute-force to see if it fits.
+  context: >
+    Yes, although anyone can guess the value, and try to check if it fits and iterate the process by brute-force it is very impractical in reality because of two main reasons.
+    - The values $a$ and $b$ are chosen from a very large range, typically the size of $p$ which is hundreds of digits long in practice.
+    - Even if the outsider guesses one value and tries to verify it, he'd need to compute $g^a\ mod\ p$ or $g^b\ mod\ p$ for each guess which is computationally very expensive.

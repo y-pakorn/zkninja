@@ -1,0 +1,9 @@
+- id: 1
+  kind: choice
+  question: What is GCD(97, 31)
+  distractors:
+    - No GCD
+    - "3"
+    - "31"
+  answers: "1"
+

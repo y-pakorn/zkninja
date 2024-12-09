@@ -1,0 +1,7 @@
+- id: 1
+  kind: open-ended
+  question: Explain why RSA Encryption/Decryption makes sense i.e. decryption of the cipher text return the same number back.
+  context: >
+    Yes, because $c^d \equiv (m^e)^d \equiv m^{ed}\ mod\ n$. Then given that $de \equiv 1\ mod\ \phi(n)$, it must exist an integer k such that $de = k\phi(n)+1$. 
+    Now, we subsitute de, and we get $c^d \equiv m^{k\phi(n)+1} \equiv m*(m^{\phi(n)})^k$. 
+    From Euler's Theorem, therefore, $(m^{\phi(n)})^k \equiv 1\ mod\ n$  Thefore, $c^d \equiv m\ mod\ n$, returning the original plaintext

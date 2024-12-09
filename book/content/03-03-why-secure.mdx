@@ -1,0 +1,35 @@
+#  Why is RSA Encryption/Decryption secure?
+
+Let’s analyze security from different perspectives:
+
+## What Does an Outsider See?
+
+An outsider observing an RSA-encrypted message has access to:
+
+- The public key: $(e,n)$
+
+- The ciphertext: $c = m^e\ mod\ n$
+
+To decrypt the message and retrieve m, the outsider would need the private key $d$. However:
+
+Why can't the outsider calculate $d$?
+
+To find $d$, the outsider must compute the modular inverse of 
+$e\ mod\ ϕ(n)$, where $ϕ(n)=(p−1)(q−1)$. This requires knowledge of $ϕ(n)$, which can only be calculated if it can factorize $n$ into $pq$
+
+However, due to Integer Factorization Problem, it is very hard to factorize $n$! hence, cannot calculate private key $d$
+
+
+## Can Alice Learn Bob’s Private Value?
+
+Suppose Alice is an authorized sender and knows:
+
+- Bob’s public key: (e,n).
+
+- Her own plaintext message: m.
+
+- The ciphertext she sent: $c=m^e\ mod\ n$ 
+
+Even with this information:
+
+Similarly, Alice cannot derive Bob’s private key $d$, as she would need to factorize $n$ to compute $ϕ(n)$, which is very hard due to Integer Factorization Problem.
